@@ -40,7 +40,7 @@ class MagazinesTable extends Table
         parent::initialize($config);
 
         $this->setTable('magazines');
-        $this->setDisplayField('id');
+        $this->setDisplayField('mag_name'); // display for dropdown
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

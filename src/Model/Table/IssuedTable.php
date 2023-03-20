@@ -50,6 +50,22 @@ class IssuedTable extends Table
         $this->belongsTo('Members', [
             'foreignKey' => 'member_id',
         ]);
+
+        $this->belongsTo('Books', [
+            'foreignKey' => 'item_number',
+            // tell cake that all issue with category books are belong to books table
+            'conditions' => ['item_category' => 'books']
+        ]);
+
+        $this->belongsTo('Magazines', [
+            'foreignKey' => 'item_number',
+            'conditions' => ['item_category' => 'magazines']
+        ]);
+
+        $this->belongsTo('Newspapers', [
+            'foreignKey' => 'item_number',
+            'conditions' => ['item_category' => 'newspapers'],
+        ]);
     }
 
     /**

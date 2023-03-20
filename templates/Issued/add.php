@@ -58,13 +58,13 @@
                         <?= $this->Form->control('due_date', ['empty' => true, 'label' => false, 'class' => 'form-control']); ?>
                     </div>
                 </div>
-                <div class="item form-group">
+                <!-- <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Fine (RM) <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
-                        <?= $this->Form->control('fine', ['label' => false, 'class' => 'form-control']); ?>
+                        </?= $this->Form->control('fine', ['label' => false, 'class' => 'form-control']); ?>
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Fine Status <span class="required">*</span>
                     </label>
@@ -79,13 +79,13 @@
                         <?= $this->Form->control('item_category', ['options' => $item_category, 'id' => 'item-selector', 'empty' => 'Choose Category', 'label' => false, 'class' => 'form-control']); ?>
                     </div>
                 </div>
-                <div class="item form-group">
+                <!-- <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Item Condition <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
-                        <?= $this->Form->control('item_condition', ['options' => $item_condition, 'empty' => 'Choose Condition', 'label' => false, 'class' => 'form-control']); ?>
+                        </?= $this->Form->control('item_condition', ['options' => $item_condition, 'empty' => 'Choose Condition', 'label' => false, 'class' => 'form-control']); ?>
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Item Comment <span class="required">*</span>
                     </label>

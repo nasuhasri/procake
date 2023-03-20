@@ -1,80 +1,101 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Issued $issued
- */
-?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Issued'), ['action' => 'edit', $issued->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Issued'), ['action' => 'delete', $issued->id], ['confirm' => __('Are you sure you want to delete # {0}?', $issued->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Issued'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Issued'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+<div class="page-title">
+    <div class="title_left">
+        <h1>Single Issue Listing</h1>
+    </div>
+
+    <div class="title_right">
+        <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                </span>
+            </div>
         </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="issued view content">
-            <h3><?= h($issued->id) ?></h3>
-            <table>
-                <tr>
-                    <th><?= __('Status') ?></th>
-                    <td><?= h($issued->status) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Fine Status') ?></th>
-                    <td><?= h($issued->fine_status) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Item Category') ?></th>
-                    <td><?= h($issued->item_category) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Item Condition') ?></th>
-                    <td><?= h($issued->item_condition) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Item Comment') ?></th>
-                    <td><?= h($issued->item_comment) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Member') ?></th>
-                    <td><?= $issued->has('member') ? $this->Html->link($issued->member->id, ['controller' => 'Members', 'action' => 'view', $issued->member->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($issued->id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Fine') ?></th>
-                    <td><?= $issued->fine === null ? '' : $this->Number->format($issued->fine) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Item Number') ?></th>
-                    <td><?= $issued->item_number === null ? '' : $this->Number->format($issued->item_number) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Date Issue') ?></th>
-                    <td><?= h($issued->date_issue) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Date Return') ?></th>
-                    <td><?= h($issued->date_return) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Due Date') ?></th>
-                    <td><?= h($issued->due_date) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Created') ?></th>
-                    <td><?= h($issued->created) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Modified') ?></th>
-                    <td><?= h($issued->modified) ?></td>
-                </tr>
-            </table>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="row" style="display: block;">
+    <div class="x-panel">
+        <div class="x-title">
+            <h2>Issue Details</h2>
+            <div class="clearfix"></div>
+
+            <!-- </?=$this->Html->link(__('<i class="fa fa-edit"> Edit Issue</i>'), ['action' => 'edit', $issued->id], ['class' => 'btn btn-warning', 'escape' => false])?> -->
+            <?=$this->Form->postLink(__('<i class="fa fa-trash"> Delete Issue</i>'), ['action' => 'delete', $issued->id], ['confirm' => __('Are you sure you want to delete # {0}?', $issued->id), 'class' => 'btn btn-danger', 'escape' => false])?>
+            <?=$this->Html->link(__('<i class="fa fa-list"> List Issues</i>'), ['action' => 'index'], ['class' => 'btn btn-primary', 'escape' => false])?>
+        </div>
+
+        <div class="x-content">
+            <div class="column-responsive">
+                <div class="issued view content">
+                    <h3><?= h('Issue #'.$issued->id) ?></h3>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th><?= __('Status') ?></th>
+                            <td><?= h($issued->status) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Fine Status') ?></th>
+                            <td><?= h($issued->fine_status) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Item Category') ?></th>
+                            <td><?= h($issued->item_category) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Item Condition') ?></th>
+                            <td><?= h($issued->item_condition) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Item Comment') ?></th>
+                            <td><?= h($issued->item_comment) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Member') ?></th>
+                            <td><?= $issued->has('member') ? $this->Html->link($issued->member->member_name, ['controller' => 'Members', 'action' => 'view', $issued->member->id]) : '' ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Issue Id') ?></th>
+                            <td><?= $this->Number->format($issued->id) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Fine') ?></th>
+                            <td><?= $issued->fine === null ? '' : $this->Number->format($issued->fine) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Item Number') ?></th>
+                            <td>
+                                <?= $issued->has('book') ? $issued->book->book_title : '' ?>
+                                <?= $issued->has('magazine') ? $issued->magazine->mag_name : '' ?>
+                                <?= (!empty($issued->newspaper)) ? $issued->newspaper->news_name : '' ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Date Issue') ?></th>
+                            <td><?= h($issued->date_issue) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Date Return') ?></th>
+                            <td><?= h($issued->date_return) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Due Date') ?></th>
+                            <td><?= h($issued->due_date) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Created') ?></th>
+                            <td><?= h($issued->created) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Modified') ?></th>
+                            <td><?= h($issued->modified) ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

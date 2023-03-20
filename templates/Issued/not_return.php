@@ -1,6 +1,6 @@
 <div class="page-title">
     <div class="title_left">
-        <h1>Issues</h1>
+        <h1>Not Returned Items</h1>
     </div>
 
     <div class="title_right">
@@ -21,9 +21,9 @@
     <div class="col-md-10 col-sm-6  ">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Issues Listing</h2>
+                <h2>Not Returned Listing</h2>
                 <div class="clearfix"></div>
-                <?=$this->Html->link(__('<i class="fa fa-plus-square"></i> Add New'), ['action' => 'add'], ['class' => 'btn btn-primary', 'escape' => false])?>
+                <?=$this->Html->link(__('<i class="fa fa-plus-square"></i> Add New'), ['action' => ''], ['class' => 'btn btn-primary', 'escape' => false])?>
             </div>
             <div class="x_content">
                 <table class="table">
@@ -64,14 +64,13 @@
                                 <?= $issue->has('magazine') ? $issue->magazine->mag_name : '' ?>
                                 <?= (!empty($issue->newspaper)) ? $issue->newspaper->news_name : '' ?>
                             </td>
-                            <!-- <td></?=$issue->item_number === null ? '' : $this->Number->format($issue->item_number)?></td> -->
                             <td><?=$issue->has('member') ? $this->Html->link($issue->member->member_name, ['controller' => 'Members', 'action' => 'view', $issue->member->id]) : ''?></td>
                             <td><?=h($issue->created)?></td>
                             <td><?=h($issue->modified)?></td>
                             <td class="actions">
                                 <?=$this->Html->link(__('View'), ['action' => 'view', $issue->id], ['class' => 'btn btn-primary'])?>
                                 <?=$this->Html->link(__('Edit'), ['action' => 'edit', $issue->id], ['class' => 'btn btn-warning'])?>
-                                <?=$this->Html->link(__('Return'), ['action' => 'return', $issue->id], ['class' => 'btn btn-info'])?>
+                                <?=$this->Html->link(__('Return'), ['action' => 'returnItem', $issue->id], ['class' => 'btn btn-info'])?>
                                 <?=$this->Form->postLink(__('Delete'), ['action' => 'delete', $issue->id], ['confirm' => __('Are you sure you want to delete # {0}?', $issue->id), 'class' => 'btn btn-danger', 'escape' => false])?>
                             </td>
                         </tr>

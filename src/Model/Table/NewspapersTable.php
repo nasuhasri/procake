@@ -40,7 +40,7 @@ class NewspapersTable extends Table
         parent::initialize($config);
 
         $this->setTable('newspapers');
-        $this->setDisplayField('id');
+        $this->setDisplayField('news_name');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

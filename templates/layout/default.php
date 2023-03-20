@@ -91,11 +91,11 @@
                     <?=$this->Html->link(__('<i class="fa fa-users"></i> Members'), ['controller' => 'Members','action' => 'index'], ['escape' => false])?>
                   </li>
                   <li>
-                    <a
-                      ><i class="fa fa-thumbs-up"></i> Returned
-                    </a>
+                    <?=$this->Html->link(__('<i class="fa fa-thumbs-up"></i> Returned'), ['controller' => 'Issued','action' => 'return'], ['escape' => false])?>
                   </li>
-                  <li><a href="#"><i class="fa fa-thumbs-down"></i> Not Returned</a></li>
+                  <li>
+                    <?=$this->Html->link(__('<i class="fa fa-thumbs-down"></i> Not Returned'), ['controller' => 'Issued','action' => 'notReturn'], ['escape' => false])?>
+                  </li>
                 </ul>
               </div>
             </div>

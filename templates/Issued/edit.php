@@ -1,43 +1,110 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Issued $issued
- * @var string[]|\Cake\Collection\CollectionInterface $members
- */
-?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $issued->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $issued->id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Issued'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="issued form content">
-            <?= $this->Form->create($issued) ?>
-            <fieldset>
-                <legend><?= __('Edit Issued') ?></legend>
-                <?php
-                    echo $this->Form->control('date_issue', ['empty' => true]);
-                    echo $this->Form->control('date_return', ['empty' => true]);
-                    echo $this->Form->control('status');
-                    echo $this->Form->control('due_date', ['empty' => true]);
-                    echo $this->Form->control('fine');
-                    echo $this->Form->control('fine_status');
-                    echo $this->Form->control('item_category');
-                    echo $this->Form->control('item_condition');
-                    echo $this->Form->control('item_comment');
-                    echo $this->Form->control('item_number');
-                    echo $this->Form->control('member_id', ['options' => $members, 'empty' => true]);
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
+<div class="page-title">
+    <div class="title_left">
+        <h1>Edit Book</h1>
+    </div>
+
+    <div class="title_right">
+        <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                </span>
+            </div>
         </div>
     </div>
 </div>
+
+<div class="clearfix"></div>
+
+<div class="row" style="display: block;">
+    <div class="column-md-12 col-sm-12">
+        <div class="x-panel">
+            <div class="x-title">
+                <h2>Edit Issue Form</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <?= $this->Form->postLink(__('<i class="fa fa-trash"> Delete Issue</i>'), ['action' => 'delete', $issued->id], ['confirm' => __('Are you sure you want to delete # {0}?', $issued->id), 'class' => 'btn btn-danger', 'escape' => false]) ?>
+                    </li>
+                    <li>
+                        <?= $this->Html->link(__('<i class="fa fa-list"> List Issues</i>'), ['action' => 'index'], ['class' => 'btn btn-primary', 'escape' => false]) ?>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="x-content">
+                <div class="x_content">
+                    <br />
+                    <?= $this->Form->create($issued) ?>
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Date Issue <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <?= $this->Form->control('date_issue', ['empty' => true, 'label' => false, 'class' => 'form-control']); ?>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Due Date <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <?= $this->Form->control('due_date', ['empty' => true, 'label' => false, 'class' => 'form-control']); ?>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Item Category <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <?= $this->Form->control('item_category', ['options' => $item_category, 'id' => 'item-selector', 'empty' => 'Choose Category', 'label' => false, 'class' => 'form-control']); ?>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Item Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <?= $this->Form->control('item_number', ['id' => 'item-list', 'type' => 'select', 'options' => $itemList, 'label' => false, 'class' => 'form-control']); ?>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Member Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <?= $this->Form->control('member_id', ['type' => 'select', 'options' => $membersName, 'empty' => 'Choose Member', 'label' => false, 'class' => 'form-control']); ?>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="item form-group">
+                        <div class="col-md-6 col-sm-6 offset-md-3">
+                            <?= $this->Html->link(__('Cancel'), ['controller' => 'Issued','action' => 'index'], ['class' => 'btn btn-secondary'])?>
+                            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-success']) ?>
+                        </div>
+                    </div>
+                    <?= $this->Form->end() ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#item-selector').on('change', function (e) {
+        let value = $(this).val();
+        // let url = '<?= $this->Url->build(['action' => 'getItemLists']) ?>/' + value ;
+        let url = `<?= $this->Url->build(['action' => 'getItemLists']) ?>/${value}`;
+
+        $.getJSON(url, function (data) {
+            // console.log(data);
+            //select
+                //option
+            //select
+            let html = '<option value="">Please select</option>'
+            $.each(data, function (key, value) {
+                html += `<option value="${key}">${value}</option>`;
+            });
+
+            // console.log(html);
+
+            $('#item-list').empty().append(html);
+        });
+    });
+</script>
