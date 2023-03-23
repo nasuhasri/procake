@@ -62,7 +62,7 @@
                             </tr>
                             <tr>
                                 <th><?= __('Date Issue') ?></th>
-                                <td><?= h($issued->date_issue) ?></td>
+                                <td><?= $issued->date_issue->format('d M Y h:i A') ?></td>
                             </tr>
                             <tr>
                                 <th><?= __('Due Date') ?></th>
@@ -81,43 +81,41 @@
 
                     <br />
 
-                    <h3>Return Book Here...</h3>
+                    <h3>Return Book Form</h3>
                     <div class="ln_solid"></div>
 
                     <?= $this->Form->create($issued) ?>
                     <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Date Return <span class="required">*</span>
-                        </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <?= $this->Form->control('date_return', ['empty' => true, 'label' => false, 'class' => 'form-control']); ?>
+                            <?= $this->Form->control('date_return', ['empty' => true, 'label' => false, 'class' => 'form-control', 'value' => date('Y-m-d'), 'type' => 'hidden']); ?>
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Status <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <?= $this->Form->control('status', ['label' => false, 'class' => 'form-control']); ?>
+                            <?= $this->Form->control('status', ['options' => $status, 'empty' => 'Choose Status', 'label' => false, 'class' => 'form-control']); ?>
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Fine (RM) <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <?= $this->Form->control('fine', ['label' => false, 'class' => 'form-control']); ?>
+                            <?= $this->Form->control('fine', ['label' => false, 'class' => 'form-control', 'value' => $fine, 'readonly' => true]); ?>
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Fine Status <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <?= $this->Form->control('fine_status', ['label' => false, 'class' => 'form-control']); ?>
+                            <?= $this->Form->control('fine_status', ['options' => $fineStatus, 'empty' => 'Choose Fine Status', 'label' => false, 'class' => 'form-control']); ?>
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Item Condition <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <?= $this->Form->control('item_condition', ['options' => $item_condition, 'empty' => 'Choose Condition', 'label' => false, 'class' => 'form-control']); ?>
+                            <?= $this->Form->control('item_condition', ['options' => $item_condition, 'empty' => 'Choose Item Condition', 'label' => false, 'class' => 'form-control']); ?>
                         </div>
                     </div>
                     <div class="item form-group">

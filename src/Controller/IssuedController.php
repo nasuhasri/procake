@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use DateTime;
+
 /**
  * Issued Controller
  *
@@ -232,6 +234,40 @@ class IssuedController extends AppController
             'bad'  => 'bad'
         ];
 
-        $this->set(compact('issued', 'item_condition'));
+        $fineStatus = [
+            'unpaid' => 'unpaid',
+            'paid' => 'paid',
+        ];
+
+        $status = [
+            'issued' => 'issued',
+            'completed' => 'completed'
+        ];
+
+        $fine = 0;
+
+        if(date('Y-m-d') > $issued->due_date->format('Y-m-d')){
+            $today = new DateTime(date('Y-m-d'));
+            $due_date = new DateTime($issued->due_date->format('Y-m-d'));
+
+            $duration = $today->diff($due_date);
+            $duration = $duration->days;
+
+            $fine = $duration * 0.2;
+            
+        }
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $data = $this->request->getData();
+            $issued = $this->Issued->patchEntity($issued, $data);
+            if ($this->Issued->save($issued)) {
+                $this->Flash->success(__('The issued has been saved.'));
+
+                return $this->redirect(['action' => 'return']);
+            }
+            $this->Flash->error(__('The issued could not be saved. Please, try again.'));
+        }
+
+        $this->set(compact('issued', 'item_condition', 'fineStatus', 'status', 'fine'));
     }
 }

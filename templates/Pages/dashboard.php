@@ -1,4 +1,4 @@
-<h1>My Dashboard</h1>
+<h1>My Dashboard Home at Pages</h1>
 
 <div class="page-title">
   <div class="title_left">

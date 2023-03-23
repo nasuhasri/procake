@@ -64,14 +64,14 @@
                                 <?= $issue->has('magazine') ? $issue->magazine->mag_name : '' ?>
                                 <?= (!empty($issue->newspaper)) ? $issue->newspaper->news_name : '' ?>
                             </td>
-                            <!-- <td></?=$issue->item_number === null ? '' : $this->Number->format($issue->item_number)?></td> -->
                             <td><?=$issue->has('member') ? $this->Html->link($issue->member->member_name, ['controller' => 'Members', 'action' => 'view', $issue->member->id]) : ''?></td>
                             <td><?=h($issue->created)?></td>
                             <td><?=h($issue->modified)?></td>
                             <td class="actions">
                                 <?=$this->Html->link(__('View'), ['action' => 'view', $issue->id], ['class' => 'btn btn-primary'])?>
-                                <?=$this->Html->link(__('Edit'), ['action' => 'edit', $issue->id], ['class' => 'btn btn-warning'])?>
-                                <?=$this->Html->link(__('Return'), ['action' => 'return', $issue->id], ['class' => 'btn btn-info'])?>
+                                <!-- show edit and return button for item with issued status  -->
+                                <?= ($issue->status === 'issued') ? $this->Html->link(__('Edit'), ['action' => 'edit', $issue->id], ['class' => 'btn btn-warning']) : '' ?>
+                                <?= ($issue->status === 'issued') ? $this->Html->link(__('Return'), ['action' => 'return_item', $issue->id], ['class' => 'btn btn-info']) : '' ?>
                                 <?=$this->Form->postLink(__('Delete'), ['action' => 'delete', $issue->id], ['confirm' => __('Are you sure you want to delete # {0}?', $issue->id), 'class' => 'btn btn-danger', 'escape' => false])?>
                             </td>
                         </tr>
