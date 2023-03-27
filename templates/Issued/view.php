@@ -75,23 +75,23 @@
                         </tr>
                         <tr>
                             <th><?= __('Date Issue') ?></th>
-                            <td><?= h($issued->date_issue) ?></td>
+                            <td><?= h($issued->date_issue->format('d M Y h:i A')) ?></td>
                         </tr>
                         <tr>
                             <th><?= __('Date Return') ?></th>
-                            <td><?= h($issued->date_return) ?></td>
+                            <td><?= (!empty($issue->date_return)) ? $issue->date_return->format('d M Y h:i A') : '' ?></td>
                         </tr>
                         <tr>
                             <th><?= __('Due Date') ?></th>
-                            <td><?= h($issued->due_date) ?></td>
+                            <td><?= h($issued->due_date->format('d M Y h:i A')) ?></td>
                         </tr>
                         <tr>
                             <th><?= __('Created') ?></th>
-                            <td><?= h($issued->created) ?></td>
+                            <td><?= h($issued->created->format('d M Y h:i A')) ?></td>
                         </tr>
                         <tr>
                             <th><?= __('Modified') ?></th>
-                            <td><?= h($issued->modified) ?></td>
+                            <td><?= h($issued->modified->format('d M Y h:i A')) ?></td>
                         </tr>
                     </table>
                 </div>

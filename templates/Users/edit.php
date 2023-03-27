@@ -1,34 +1,71 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\User $user
- */
-?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+<div class="page-title">
+    <div class="title_left">
+        <h1>Edit User</h1>
+    </div>
+
+    <div class="title_right">
+        <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                </span>
+            </div>
         </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="users form content">
-            <?= $this->Form->create($user) ?>
-            <fieldset>
-                <legend><?= __('Edit User') ?></legend>
-                <?php
-                    echo $this->Form->control('name');
-                    echo $this->Form->control('username');
-                    echo $this->Form->control('password');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="row" style="display: block;">
+    <div class="col-md-12 col-sm-12 ">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Edit User Form</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <?= $this->Form->postLink(__('<i class="fa fa-trash"> Delete User</i>'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'btn btn-danger', 'escape' => false]) ?>
+                    </li>
+                    <li>
+                        <?= $this->Html->link(__('<i class="fa fa-list"> List Users</i>'), ['action' => 'index'], ['class' => 'btn btn-primary', 'escape' => false]) ?>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <?= $this->Form->create($user) ?>
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <?= $this->Form->control('name', ['required' => true, 'class' => 'form-control', 'label' => false]) ?>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="username">Username <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <?= $this->Form->control('username', ['required' => true, 'class' => 'form-control', 'label' => false]) ?>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Password</label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <?= $this->Form->control('password', ['required' => false, 'value' => '', 'type' => 'password', 'class' => 'form-control', 'label' => false]) ?>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="item form-group">
+                        <div class="col-md-6 col-sm-6 offset-md-3">
+                            <?= $this->Form->button('RESET', ['type' => 'reset', 'class' => 'btn btn-primary']) ?>
+                            <?= $this->Form->button('SUBMIT', ['type' => 'submit', 'class' => 'btn btn-success']) ?>
+                        </div>
+                    </div>
+                </form>
+                <?= $this->Form->end() ?>
+            </div>
         </div>
     </div>
 </div>

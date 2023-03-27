@@ -68,11 +68,14 @@ class MembersController extends AppController
      */
     public function edit($id = null)
     {
+        $data = $this->request->getData();
+
         $member = $this->Members->get($id, [
             'contain' => [],
         ]);
+
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $member = $this->Members->patchEntity($member, $this->request->getData());
+            $member = $this->Members->patchEntity($member, $data);
             if ($this->Members->save($member)) {
                 $this->Flash->success(__('The member has been saved.'));
 
@@ -101,5 +104,22 @@ class MembersController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function addMultiple(){
+        $member = $this->Members->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $member = $this->Members->patchEntity($member, $this->request->getData());
+            if ($this->Members->save($member)) {
+                $this->Flash->success(__('The member has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The member could not be saved. Please, try again.'));
+        }
+
+        $test = 'helloooo';
+
+        $this->set(compact('test', 'member'));
     }
 }

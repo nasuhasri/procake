@@ -63,19 +63,19 @@
                             </tr>
                             <tr>
                                 <th><?= __('Date Receipt') ?></th>
-                                <td><?= h($newspaper->date_receipt) ?></td>
+                                <td><?= h($newspaper->date_receipt->format('d M Y h:i A')) ?></td>
                             </tr>
                             <tr>
                                 <th><?= __('Date Published') ?></th>
-                                <td><?= h($newspaper->date_published) ?></td>
+                                <td><?= h($newspaper->date_published->format('d M Y h:i A')) ?></td>
                             </tr>
                             <tr>
                                 <th><?= __('Created') ?></th>
-                                <td><?= h($newspaper->created) ?></td>
+                                <td><?= h($newspaper->created->format('d M Y h:i A')) ?></td>
                             </tr>
                             <tr>
                                 <th><?= __('Modified') ?></th>
-                                <td><?= h($newspaper->modified) ?></td>
+                                <td><?= h($newspaper->modified->format('d M Y h:i A')) ?></td>
                             </tr>
                         </table>
                     </div>

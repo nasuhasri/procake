@@ -52,11 +52,11 @@
                                 <td><?=h($book->book_type)?></td>
                                 <td><?=h($book->author_name)?></td>
                                 <td><?=$book->quantity === null ? '' : $this->Number->format($book->quantity)?></td>
-                                <td><?=h($book->date_purchased)?></td>
+                                <td><?=h($book->date_purchased->format('d M Y h:i A'))?></td>
                                 <td><?=$book->price === null ? '' : $this->Number->format($book->price)?></td>
                                 <td><?=h($book->publisher)?></td>
-                                <td><?=h($book->created)?></td>
-                                <td><?=h($book->modified)?></td>
+                                <td><?=h($book->created->format('d M Y h:i A'))?></td>
+                                <td><?=h($book->modified->format('d M Y h:i A'))?></td>
                                 <td class="actions">
                                     <?=$this->Html->link(__('View'), ['action' => 'view', $book->id], ['class' => 'btn btn-primary'])?>
                                     <?=$this->Html->link(__('Edit'), ['action' => 'edit', $book->id], ['class' => 'btn btn-warning'])?>

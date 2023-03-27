@@ -72,6 +72,16 @@ class PagesController extends AppController
     }
 
     public function dashboard(){
-        //
+        $this->Members = $this->fetchTable('Members');
+        $this->Books = $this->fetchTable('Books');
+        $this->Newspapers = $this->fetchTable('Newspapers');
+        $this->Magazines = $this->fetchTable('Magazines');
+
+        $countMembers = $this->Members->find('all')->count();
+        $countBooks = $this->Books->find('all')->count();
+        $countNewspapers = $this->Newspapers->find('all')->count();
+        $countMagazines = $this->Magazines->find('all')->count();
+
+        $this->set(compact('countMembers', 'countBooks', 'countNewspapers', 'countMagazines'));
     }
 }

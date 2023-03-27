@@ -24,6 +24,7 @@
                 <h2>Members Listing</h2>
                 <div class="clearfix"></div>
                 <?=$this->Html->link(__('<i class="fa fa-plus-square"></i> Add New'), ['action' => 'add'], ['class' => 'btn btn-primary', 'escape' => false])?>
+                <?=$this->Html->link(__('<i class="fa fa-plus-square"></i> Add Multiple Records'), ['action' => 'addMultiple'], ['class' => 'btn btn-primary', 'escape' => false])?>
             </div>
             <div class="x-content">
                 <table class="table">
@@ -33,6 +34,7 @@
                             <th><?= $this->Paginator->sort('member_name') ?></th>
                             <th><?= $this->Paginator->sort('ic_number') ?></th>
                             <th><?= $this->Paginator->sort('phone_number') ?></th>
+                            <th><?= $this->Paginator->sort('username') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                     </thead>
@@ -43,6 +45,7 @@
                             <td><?= h($member->member_name) ?></td>
                             <td><?= $member->ic_number === null ? '' : $this->Number->format($member->ic_number) ?></td>
                             <td><?= $member->phone_number === null ? '' : $this->Number->format($member->phone_number) ?></td>
+                            <td><?= h($member->username) ?></td>
                             <td class="actions">
                                 <?=$this->Html->link(__('View'), ['action' => 'view', $member->id], ['class' => 'btn btn-primary'])?>
                                 <?=$this->Html->link(__('Edit'), ['action' => 'edit', $member->id], ['class' => 'btn btn-warning'])?>

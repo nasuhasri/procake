@@ -57,15 +57,15 @@
                         </tr>
                         <tr>
                             <th><?= __('Date Receipt') ?></th>
-                            <td><?= h($magazine->date_receipt) ?></td>
+                            <td><?= h($magazine->date_receipt->format('d M Y h:i A')) ?></td>
                         </tr>
                         <tr>
                             <th><?= __('Created') ?></th>
-                            <td><?= h($magazine->created) ?></td>
+                            <td><?= h($magazine->created->format('d M Y h:i A')) ?></td>
                         </tr>
                         <tr>
                             <th><?= __('Modified') ?></th>
-                            <td><?= h($magazine->modified) ?></td>
+                            <td><?= h($magazine->modified->format('d M Y h:i A')) ?></td>
                         </tr>
                     </table>
                 </div>

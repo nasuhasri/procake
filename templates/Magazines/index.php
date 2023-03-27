@@ -48,12 +48,12 @@
                             <td><?= $this->Number->format($magazine->id) ?></td>
                             <td><?= h($magazine->mag_name) ?></td>
                             <td><?= h($magazine->mag_type) ?></td>
-                            <td><?= h($magazine->date_receipt) ?></td>
+                            <td><?= h($magazine->date_receipt->format('d M Y h:i A')) ?></td>
                             <td><?= $magazine->pages === null ? '' : $this->Number->format($magazine->pages) ?></td>
                             <td><?= $magazine->price === null ? '' : $this->Number->format($magazine->price) ?></td>
                             <td><?= h($magazine->publisher) ?></td>
-                            <td><?= h($magazine->created) ?></td>
-                            <td><?= h($magazine->modified) ?></td>
+                            <td><?= h($magazine->created->format('d M Y h:i A')) ?></td>
+                            <td><?= h($magazine->modified->format('d M Y h:i A')) ?></td>
                             <td class="actions">
                                 <?=$this->Html->link(__('View'), ['action' => 'view', $magazine->id], ['class' => 'btn btn-primary'])?>
                                 <?=$this->Html->link(__('Edit'), ['action' => 'edit', $magazine->id], ['class' => 'btn btn-warning'])?>

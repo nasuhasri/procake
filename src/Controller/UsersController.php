@@ -23,7 +23,7 @@ class UsersController extends AppController
         // Configure the login action to not require authentication, preventing
         // the infinite redirect loop issue
         // login() action of the UsersController does not require authentication or authorization
-        $this->Authentication->addUnauthenticatedActions(['login']);
+        $this->Authentication->addUnauthenticatedActions(['login', 'add']);
     }
 
     public function login()
@@ -50,7 +50,7 @@ class UsersController extends AppController
             $this->Flash->error(__('Invalid username or password'));
         }
 
-        // render
+        // render login layout for login action
         $this->viewBuilder()->setLayout('login');
     }
 
@@ -105,6 +105,8 @@ class UsersController extends AppController
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $this->set(compact('user'));
+
+        $this->viewBuilder()->setLayout('login');
     }
 
     /**
@@ -120,7 +122,15 @@ class UsersController extends AppController
             'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
+            $data = $this->request->getData();
+
+            if($data['password'] == ''){
+                // remove password from data array
+                unset($data['password']);
+            }
+
+            $user = $this->Users->patchEntity($user, $data);
+            
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 

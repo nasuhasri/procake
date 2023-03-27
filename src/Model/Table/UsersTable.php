@@ -68,6 +68,8 @@ class UsersTable extends Table
         return $validator;
     }
 
+    // userid at books/newspaper 
+
     /**
      * Returns a rules checker object that will be used for validating
      * application integrity.

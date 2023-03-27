@@ -68,15 +68,15 @@
                             </tr>
                             <tr>
                                 <th><?=__('Date Purchased')?></th>
-                                <td><?=h($book->date_purchased)?></td>
+                                <td><?=h($book->date_purchased->format('d M Y h:i A'))?></td>
                             </tr>
                             <tr>
                                 <th><?=__('Created')?></th>
-                                <td><?=h($book->created)?></td>
+                                <td><?=h($book->created->format('d M Y h:i A'))?></td>
                             </tr>
                             <tr>
                                 <th><?=__('Modified')?></th>
-                                <td><?=h($book->modified)?></td>
+                                <td><?=h($book->modified->format('d M Y h:i A'))?></td>
                             </tr>
                         </table>
                     </div>

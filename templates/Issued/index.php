@@ -18,12 +18,13 @@
 <div class="clearfix"></div>
 
 <div class="row" style="display: block;">
-    <div class="col-md-10 col-sm-6  ">
+    <div class="col-md-12 col-sm-6  ">
         <div class="x_panel">
             <div class="x_title">
                 <h2>Issues Listing</h2>
                 <div class="clearfix"></div>
                 <?=$this->Html->link(__('<i class="fa fa-plus-square"></i> Add New'), ['action' => 'add'], ['class' => 'btn btn-primary', 'escape' => false])?>
+                <?=$this->Html->link(__('<i class="fa fa-plus-square"></i> Add Multiple Records'), ['action' => 'addMultiple'], ['class' => 'btn btn-primary', 'escape' => false])?>
             </div>
             <div class="x_content">
                 <table class="table">
@@ -50,10 +51,10 @@
                         <?php foreach ($issues as $issue): ?>
                         <tr>
                             <td><?=$this->Number->format($issue->id)?></td>
-                            <td><?=h($issue->date_issue)?></td>
-                            <td><?=h($issue->date_return)?></td>
+                            <td><?=h($issue->date_issue->format('d M Y h:i A'))?></td>
+                            <td><?= (!empty($issue->date_return)) ? $issue->date_return->format('d M Y h:i A') : '' ?></td>
                             <td><?=h($issue->status)?></td>
-                            <td><?=h($issue->due_date)?></td>
+                            <td><?=h($issue->due_date->format('d M Y h:i A'))?></td>
                             <td><?=$issue->fine === null ? '' : $this->Number->format($issue->fine)?></td>
                             <td><?=h($issue->fine_status)?></td>
                             <td><?=h($issue->item_category)?></td>
@@ -65,8 +66,8 @@
                                 <?= (!empty($issue->newspaper)) ? $issue->newspaper->news_name : '' ?>
                             </td>
                             <td><?=$issue->has('member') ? $this->Html->link($issue->member->member_name, ['controller' => 'Members', 'action' => 'view', $issue->member->id]) : ''?></td>
-                            <td><?=h($issue->created)?></td>
-                            <td><?=h($issue->modified)?></td>
+                            <td><?=h($issue->created->format('d M Y h:i A'))?></td>
+                            <td><?=h($issue->modified->format('d M Y h:i A'))?></td>
                             <td class="actions">
                                 <?=$this->Html->link(__('View'), ['action' => 'view', $issue->id], ['class' => 'btn btn-primary'])?>
                                 <!-- show edit and return button for item with issued status  -->

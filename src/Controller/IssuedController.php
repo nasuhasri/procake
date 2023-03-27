@@ -184,16 +184,6 @@ class IssuedController extends AppController
     }
 
     public function return($id = null){
-        // $this->paginate = [
-        //     'contain' => ['Members', 'Books', 'Magazines', 'Newspapers'],
-        //     'conditions' => [
-        //         'Issued.date_return IS NOT NULL'
-        //     ]
-        // ];
-        // $issues = $this->paginate($this->Issued);
-
-        // $this->set(compact('issues'));
-
         $this->paginate = [
             'contain' => ['Members', 'Books', 'Magazines', 'Newspapers'],
             'conditions' => [
@@ -201,12 +191,6 @@ class IssuedController extends AppController
             ]
         ];
         $issues = $this->paginate($this->Issued);
-
-        // pr($id); die;
-
-        foreach($issues as $issue){
-            // pr($issue->id); die;
-        }
 
         $this->set(compact('issues'));
     }
@@ -269,5 +253,31 @@ class IssuedController extends AppController
         }
 
         $this->set(compact('issued', 'item_condition', 'fineStatus', 'status', 'fine'));
+    }
+
+    public function addMultiple(){
+        $data = $this->request->getData();
+
+        // pr($data['member_name']); die;
+        $item_category = [
+            'books' => 'Books',
+            'magazines' => 'Magazines',
+            'newspapers' => 'Newspapers',
+        ];
+
+        $issued = $this->Issued->newEmptyEntity();
+        // if ($this->request->is('post')) {
+        //     $issued = $this->Issued->patchEntity($issued, $this->request->getData());
+        //     if ($this->Issued->save($issued)) {
+        //         $this->Flash->success(__('The issued has been saved.'));
+
+        //         return $this->redirect(['action' => 'index']);
+        //     }
+        //     $this->Flash->error(__('The issued could not be saved. Please, try again.'));
+        // }
+        // $members = $this->Issued->Members->find('list', ['keyField' => 'id', 'valueField' => 'member_name'])->all();
+        
+
+        $this->set(compact('issued', 'item_category'));
     }
 }

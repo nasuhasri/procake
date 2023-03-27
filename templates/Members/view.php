@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
     <div class="column-responsive column-80">
         <div class="members view content">
             
@@ -53,7 +53,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="page-title">
     <div class="title_left">
@@ -106,6 +106,10 @@
                             <tr>
                                 <th><?= __('Phone Number') ?></th>
                                 <td><?= $member->phone_number === null ? '' : $this->Number->format($member->phone_number) ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= __('Username') ?></th>
+                                <td><?= h($member->username) ?></td>
                             </tr>
                         </table>
                     </div>

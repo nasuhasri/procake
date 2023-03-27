@@ -91,6 +91,9 @@
                   <li>
                     <?=$this->Html->link(__('<i class="fa fa-thumbs-down"></i> Not Returned'), ['controller' => 'Issued','action' => 'notReturn'], ['escape' => false])?>
                   </li>
+                  <li>
+                    <?=$this->Html->link(__('<i class="fa fa-user"></i> Users'), ['controller' => 'Users','action' => 'index'], ['escape' => false])?>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -98,7 +101,7 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <?=$this->Html->link(__('Logout'), ['controller' => 'Users','action' => 'logout'], ['escape' => false, 'class' => 'glyphicon glyphicon-off'])?>
+              <?=$this->Html->link(__('<span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout'), ['controller' => 'Users','action' => 'logout'], ['escape' => false])?>
             </div>
             <!-- /menu footer buttons -->
           </div>
@@ -120,19 +123,6 @@
             <?=$this->Flash->render()?>
             <?=$this->fetch('content')?>
           </div>
-
-          <!-- <div class="row">
-            <div class="col-md-4 col-sm-4">
-              <div class="container">
-                  <h1>tets helooww</h1>
-              </div>
-            </div>
-
-            <div class="col-md-8 col-sm-8">
-              <div class="row">
-              </div>
-            </div>
-          </div> -->
         </div>
         <!-- /page content -->
 

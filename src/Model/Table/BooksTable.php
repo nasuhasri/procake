@@ -43,7 +43,10 @@ class BooksTable extends Table
         $this->setDisplayField('book_title');
         $this->setPrimaryKey('id');
 
-        $this->addBehavior('Timestamp'); }
+        $this->addBehavior('Timestamp'); 
+
+        // books has many issues
+    }
 
     /**
      * Default validation rules.

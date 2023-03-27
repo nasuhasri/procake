@@ -50,14 +50,14 @@
                             <td><?= $this->Number->format($newspaper->id) ?></td>
                             <td><?= h($newspaper->news_name) ?></td>
                             <td><?= h($newspaper->news_lang) ?></td>
-                            <td><?= h($newspaper->date_receipt) ?></td>
-                            <td><?= h($newspaper->date_published) ?></td>
+                            <td><?= h($newspaper->date_receipt->format('d M Y h:i A')) ?></td>
+                            <td><?= h($newspaper->date_published->format('d M Y h:i A')) ?></td>
                             <td><?= $newspaper->pages === null ? '' : $this->Number->format($newspaper->pages) ?></td>
                             <td><?= $newspaper->price === null ? '' : $this->Number->format($newspaper->price) ?></td>
                             <td><?= h($newspaper->type) ?></td>
                             <td><?= h($newspaper->publisher) ?></td>
-                            <td><?= h($newspaper->created) ?></td>
-                            <td><?= h($newspaper->modified) ?></td>
+                            <td><?= h($newspaper->created->format('d M Y h:i A')) ?></td>
+                            <td><?= h($newspaper->modified->format('d M Y h:i A')) ?></td>
                             <td class="actions">
                                 <?=$this->Html->link(__('View'), ['action' => 'view', $newspaper->id], ['class' => 'btn btn-primary'])?>
                                 <?=$this->Html->link(__('Edit'), ['action' => 'edit', $newspaper->id], ['class' => 'btn btn-warning'])?>

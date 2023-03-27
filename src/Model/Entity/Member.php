@@ -30,6 +30,24 @@ class Member extends Entity
         'member_name' => true,
         'ic_number' => true,
         'phone_number' => true,
+        'username' => true,
+        'password' => true,
         'issued' => true,
     ];
+
+    /**
+     * Fields that are excluded from JSON versions of the entity.
+     *
+     * @var array<string>
+     */
+    protected $_hidden = [
+        'password',
+    ];
+
+    protected function _setPassword(string $password) : ?string
+    {
+        if (strlen($password) > 0) {
+            return (new DefaultPasswordHasher())->hash($password);
+        }
+    }
 }
