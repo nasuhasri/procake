@@ -107,9 +107,28 @@ class MembersController extends AppController
     }
 
     public function addMultiple(){
+        $item_category = [
+            'books' => 'Books',
+            'magazines' => 'Magazines',
+            'newspapers' => 'Newspapers',
+        ];
+
         $member = $this->Members->newEmptyEntity();
+        
         if ($this->request->is('post')) {
-            $member = $this->Members->patchEntity($member, $this->request->getData());
+            $data = $this->request->getData();
+            
+            if(!empty($data['issued'])){
+                foreach($data['issued'] as $key => $issue){
+                    $data['issued'][$key]['date_issue'] = $issue['date_issue'] . ' 00:00:00';
+                    $data['issued'][$key]['due_date'] = $issue['due_date'] . ' 00:00:00';
+                }
+            }            
+            
+            $member = $this->Members->patchEntity($member, $data);
+
+            pr($member); die;
+
             if ($this->Members->save($member)) {
                 $this->Flash->success(__('The member has been saved.'));
 
@@ -118,8 +137,6 @@ class MembersController extends AppController
             $this->Flash->error(__('The member could not be saved. Please, try again.'));
         }
 
-        $test = 'helloooo';
-
-        $this->set(compact('test', 'member'));
+        $this->set(compact('member', 'item_category'));
     }
 }

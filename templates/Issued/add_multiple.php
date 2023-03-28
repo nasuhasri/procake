@@ -35,21 +35,21 @@
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="member_name">Member's Name <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
-                        <?= $this->Form->control('member_name', ['label' => false, 'class' => 'form-control']); ?>
+                        <?= $this->Form->control('member.member_name', ['label' => false, 'class' => 'form-control']); ?>
                     </div>
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="ic_number">IC Number <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
-                        <?= $this->Form->control('ic_number', ['label' => false, 'class' => 'form-control']); ?>
+                        <?= $this->Form->control('member.ic_number', ['label' => false, 'class' => 'form-control']); ?>
                     </div>
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="phone_number">Phone Number <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
-                        <?= $this->Form->control('phone_number', ['label' => false, 'class' => 'form-control']); ?>
+                        <?= $this->Form->control('member.phone_number', ['label' => false, 'class' => 'form-control']); ?>
                     </div>
                 </div>
 

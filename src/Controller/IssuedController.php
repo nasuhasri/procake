@@ -255,10 +255,8 @@ class IssuedController extends AppController
         $this->set(compact('issued', 'item_condition', 'fineStatus', 'status', 'fine'));
     }
 
+    // one issue belongs to one member
     public function addMultiple(){
-        $data = $this->request->getData();
-
-        // pr($data['member_name']); die;
         $item_category = [
             'books' => 'Books',
             'magazines' => 'Magazines',
@@ -266,18 +264,17 @@ class IssuedController extends AppController
         ];
 
         $issued = $this->Issued->newEmptyEntity();
-        // if ($this->request->is('post')) {
-        //     $issued = $this->Issued->patchEntity($issued, $this->request->getData());
-        //     if ($this->Issued->save($issued)) {
-        //         $this->Flash->success(__('The issued has been saved.'));
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            $issued = $this->Issued->patchEntity($issued, $data);
+            if ($this->Issued->save($issued)) {
+                $this->Flash->success(__('The issued has been saved.'));
 
-        //         return $this->redirect(['action' => 'index']);
-        //     }
-        //     $this->Flash->error(__('The issued could not be saved. Please, try again.'));
-        // }
-        // $members = $this->Issued->Members->find('list', ['keyField' => 'id', 'valueField' => 'member_name'])->all();
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The issued could not be saved. Please, try again.'));
+        }
         
-
         $this->set(compact('issued', 'item_category'));
     }
 }

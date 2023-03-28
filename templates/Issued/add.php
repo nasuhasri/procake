@@ -37,20 +37,6 @@
                         <?= $this->Form->control('date_issue', ['empty' => true, 'label' => false, 'class' => 'form-control']); ?>
                     </div>
                 </div>
-                <!-- <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Date Return <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        </?= $this->Form->control('date_return', ['empty' => true, 'label' => false, 'class' => 'form-control']); ?>
-                    </div>
-                </div> -->
-                <!-- <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Status <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        </?= $this->Form->control('status', ['label' => false, 'class' => 'form-control']); ?>
-                    </div>
-                </div> -->
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Due Date <span class="required">*</span>
                     </label>
@@ -58,20 +44,6 @@
                         <?= $this->Form->control('due_date', ['empty' => true, 'label' => false, 'class' => 'form-control']); ?>
                     </div>
                 </div>
-                <!-- <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Fine (RM) <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        </?= $this->Form->control('fine', ['label' => false, 'class' => 'form-control']); ?>
-                    </div>
-                </div> -->
-                <!-- <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Fine Status <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        </?= $this->Form->control('fine_status', ['label' => false, 'class' => 'form-control']); ?>
-                    </div>
-                </div> -->
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Item Category <span class="required">*</span>
                     </label>
@@ -79,20 +51,6 @@
                         <?= $this->Form->control('item_category', ['options' => $item_category, 'id' => 'item-selector', 'empty' => 'Choose Category', 'label' => false, 'class' => 'form-control']); ?>
                     </div>
                 </div>
-                <!-- <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Item Condition <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        </?= $this->Form->control('item_condition', ['options' => $item_condition, 'empty' => 'Choose Condition', 'label' => false, 'class' => 'form-control']); ?>
-                    </div>
-                </div> -->
-                <!-- <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Item Comment <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        </?= $this->Form->control('item_comment', ['label' => false, 'class' => 'form-control']); ?>
-                    </div>
-                </div> -->
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Item Name <span class="required">*</span>
                     </label>
@@ -123,20 +81,13 @@
 <script>
     $('#item-selector').on('change', function (e) {
         let value = $(this).val();
-        // let url = '<?= $this->Url->build(['action' => 'getItemLists']) ?>/' + value ;
         let url = `<?= $this->Url->build(['action' => 'getItemLists']) ?>/${value}`;
 
         $.getJSON(url, function (data) {
-            // console.log(data);
-            //select
-                //option
-            //select
             let html = '<option value="">Please select</option>'
             $.each(data, function (key, value) {
                 html += `<option value="${key}">${value}</option>`;
             });
-
-            // console.log(html);
 
             $('#item-list').empty().append(html);
         });

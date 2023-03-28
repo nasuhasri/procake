@@ -51,10 +51,10 @@
                         <?php foreach ($issues as $issue): ?>
                         <tr>
                             <td><?=$this->Number->format($issue->id)?></td>
-                            <td><?=h($issue->date_issue->format('d M Y h:i A'))?></td>
+                            <td><?= (!empty($issue->date_issue)) ? $issue->date_issue->format('d M Y h:i A') : '' ?></td>
                             <td><?= (!empty($issue->date_return)) ? $issue->date_return->format('d M Y h:i A') : '' ?></td>
-                            <td><?=h($issue->status)?></td>
-                            <td><?=h($issue->due_date->format('d M Y h:i A'))?></td>
+                            <td><?= h($issue->status) ?></td>
+                            <td><?= (!empty($issue->due_date)) ? $issue->due_date->format('d M Y h:i A') : '' ?></td>
                             <td><?=$issue->fine === null ? '' : $this->Number->format($issue->fine)?></td>
                             <td><?=h($issue->fine_status)?></td>
                             <td><?=h($issue->item_category)?></td>
