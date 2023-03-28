@@ -34,7 +34,7 @@
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">ISBN <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
-                        <?= $this->Form->control('isbn', ['label' => false, 'class' => 'form-control']); ?>
+                        <?= $this->Form->control('isbn', ['label' => false, 'class' => 'form-control', 'required' => true]); ?>
                     </div>
                 </div>
                 <div class="item form-group">
@@ -84,7 +84,7 @@
                 <div class="ln_solid"></div>
                 <div class="item form-group">
                     <div class="col-md-6 col-sm-6 offset-md-3">
-                        <?= $this->Html->link(__('Cancel'), ['controller' => 'Newspapers','action' => 'index'], ['class' => 'btn btn-secondary'])?>
+                        <?= $this->Html->link(__('Cancel'), ['controller' => 'Books','action' => 'index'], ['class' => 'btn btn-secondary'])?>
                         <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-success']) ?>
                     </div>
                 </div>

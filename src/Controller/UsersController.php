@@ -160,4 +160,26 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function changePassword($id = null){
+        $user = $this->Users->get($id, [
+            'contain' => [],
+        ]);
+
+        if($this->request->is(['patch', 'post', 'put'])){
+            $data = $this->request->getData();
+            
+            $user = $this->Users->patchEntity($user, $data);
+            
+            if($this->Users->save($user)){
+                $this->Flash->success(__('The password has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+
+            $this->Flash->error(__('The password could not be saved. Please, try again.'));
+        }
+
+        $this->set(compact('user'));
+    }
 }

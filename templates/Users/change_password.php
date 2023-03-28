@@ -1,6 +1,6 @@
 <div class="page-title">
     <div class="title_left">
-        <h1>Edit User</h1>
+        <h1>Change Password</h1>
     </div>
 
     <div class="title_right">
@@ -21,7 +21,7 @@
     <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Edit User Form</h2>
+                <h2>Change Password Form</h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li>
                         <?= $this->Form->postLink(__('<i class="fa fa-trash"> Delete User</i>'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'btn btn-danger', 'escape' => false]) ?>
@@ -37,30 +37,22 @@
                 <?= $this->Form->create($user) ?>
                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                     <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name <span class="required">*</span>
-                        </label>
+                        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Password</label>
                         <div class="col-md-6 col-sm-6 ">
-                            <?= $this->Form->control('name', ['required' => true, 'class' => 'form-control', 'label' => false]) ?>
+                            <?= $this->Form->control('password', ['id' => 'pwd', 'required' => false, 'value' => '', 'type' => 'password', 'class' => 'form-control', 'label' => false, 'required' => true]) ?>
                         </div>
                     </div>
                     <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="username">Username <span class="required">*</span>
-                        </label>
+                        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Confirm Password</label>
                         <div class="col-md-6 col-sm-6 ">
-                            <?= $this->Form->control('username', ['required' => true, 'class' => 'form-control', 'label' => false]) ?>
+                            <?= $this->Form->control('confirm_password', ['id' => 'confirm-pwd', 'required' => false, 'value' => '', 'type' => 'password', 'class' => 'form-control', 'label' => false, 'required' => true]) ?>
                         </div>
                     </div>
-                    <!-- <div class="item form-group">
-                        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Password</label>
-                        <div class="col-md-6 col-sm-6 ">
-                            <?= $this->Form->control('password', ['required' => false, 'value' => '', 'type' => 'password', 'class' => 'form-control', 'label' => false]) ?>
-                        </div>
-                    </div> -->
                     <div class="ln_solid"></div>
                     <div class="item form-group">
                         <div class="col-md-6 col-sm-6 offset-md-3">
                             <?= $this->Form->button('RESET', ['type' => 'reset', 'class' => 'btn btn-primary']) ?>
-                            <?= $this->Form->button('SUBMIT', ['type' => 'submit', 'class' => 'btn btn-success']) ?>
+                            <?= $this->Form->button('SUBMIT', ['id' => 'btn-submit', 'type' => 'submit', 'class' => 'btn btn-success']) ?>
                         </div>
                     </div>
                 </form>
@@ -69,3 +61,21 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('#btn-submit').on('click', function(e){
+        let currPwd = $('curr-pwd').val();
+        let password = $('#pwd').val();
+        let confirmPwd = $('#confirm-pwd').val();
+    
+        if(password != confirmPwd){
+            alert('Password not match. Please, try again.')
+            document.getElementById('pwd').value = '';
+            document.getElementById('confirm-pwd').value = '';
+
+            return false;
+        }
+
+        return true;
+    })
+</script>
