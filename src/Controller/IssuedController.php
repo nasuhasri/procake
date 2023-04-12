@@ -267,6 +267,7 @@ class IssuedController extends AppController
         if ($this->request->is('post')) {
             $data = $this->request->getData();
             $issued = $this->Issued->patchEntity($issued, $data);
+            
             if ($this->Issued->save($issued)) {
                 $this->Flash->success(__('The issued has been saved.'));
 

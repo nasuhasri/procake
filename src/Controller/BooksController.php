@@ -19,6 +19,9 @@ class BooksController extends AppController
     {
         $books = $this->paginate($this->Books);
 
+        $logged_in_user_name = $this->Authentication->getIdentity()->username;
+        $this->request->getSession()->write('name', $logged_in_user_name);
+
         $this->set(compact('books'));
     }
 

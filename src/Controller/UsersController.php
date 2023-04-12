@@ -36,7 +36,7 @@ class UsersController extends AppController
 
         if ($result->isValid()) {
         // pr($result); die;
-            // redirect to /articles after login success
+            // redirect to /books after login success
             $redirect = $this->request->getQuery('redirect', [
                 'controller' => 'Books',
                 'action' => 'index',

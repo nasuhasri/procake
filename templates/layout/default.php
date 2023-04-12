@@ -52,7 +52,10 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <?php $name = $this->request->getSession()->read('name'); ?>
+                <?php if ($name): ?>
+                  <h2><?= ucfirst($name) ?></h2>
+                <?php endif; ?>
               </div>
             </div>
             <!-- /menu profile quick info -->
