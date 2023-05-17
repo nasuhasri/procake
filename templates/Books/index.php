@@ -66,6 +66,61 @@
                         <?php endforeach;?>
                     </tbody>
                 </table>
+
+                <?php
+                // Set the timezone to your desired location
+                date_default_timezone_set('America/New_York');
+
+                // Get the current year and month
+                $year = date('Y');
+                $month = date('n');
+
+                // Get the number of days in the month
+                $num_days = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+
+                // Create a DateTime object for the first day of the month
+                $first_day = new DateTime("$year-$month-01");
+
+                // Determine the day of the week the first day falls on (0 = Sunday, 1 = Monday, etc.)
+                $day_of_week = $first_day->format('w');
+
+                // Create an array of day labels
+                $day_labels = array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat');
+                ?>
+
+                <!-- Output the calendar table -->
+                <table class="table">
+                    <tr>
+                        <!-- output the days name -->
+                        <?php
+                            foreach ($day_labels as $label) {
+                                echo '<th>' . $label . '</th>';
+                            }
+                        ?>
+                    </tr>
+                    <tr>
+                        <?php
+                        // output the days of the month 
+                        for ($i = 0; $i < $num_days + $day_of_week; $i++) {
+                            if ($i < $day_of_week) {
+                                echo '<td></td>';
+                            } else {
+                                // days start from day 1
+                                $day = $i - $day_of_week + 1;
+                                echo '<td>' . $day . '</td>';
+                            }
+
+                            // to determine if a new table row should be started
+                            // checks if the current day is at the end of the week (6th day, which is Saturday in a calendar), and if so, starts a new row for the next week
+                            if ($i % 7 == 6) {
+                                // echo $i . " current day";
+                                // break;
+                                echo '</tr><tr>';
+                            }
+                        }
+                        ?>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

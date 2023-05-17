@@ -124,10 +124,10 @@ class UsersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
 
-            if($data['password'] == ''){
-                // remove password from data array
-                unset($data['password']);
-            }
+            // if($data['password'] == ''){
+            //     // remove password from data array
+            //     unset($data['password']);
+            // }
 
             $user = $this->Users->patchEntity($user, $data);
             
