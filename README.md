@@ -5,7 +5,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  ![Project Logo](/webroot/img/logo.png)
+  ![Project Logo](/webroot/img/logo.png "Logo")
   <h3 align="center">ProCake - Library Management System</h3>
 
   <p align="center">
