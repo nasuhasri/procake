@@ -5,10 +5,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/nasuhasri/procake">
-    <img src="img/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
+  ![Project Logo](/webroot/img/logo.png)
   <h3 align="center">ProCake - Library Management System</h3>
 
   <p align="center">
@@ -42,9 +39,15 @@ Please install the software listed below.
 
 1. Open Database tab in Laragon. Create database named `procake`.
 2. Import the `procake.sql` file into the newly created database.
-3. Clone the repo into C:/Laragon/WWW folder
+3. Clone the repo into `C:/Laragon/WWW` folder
    ```sh
    git clone https://github.com/nasuhasri/procake.git
+   ```
+4. Now, copy this link (`http://localhost/procake`) and paste it in your browser. 
+5. You will be prompt to key in username and password. Use below credentials.
+   ```sh
+   username: admin
+   password: admin
    ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
