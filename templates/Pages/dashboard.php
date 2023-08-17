@@ -148,15 +148,10 @@
                 title: {
                     display: true,
                     text: 'Chart.js Bar Chart - Stacked'
-                },
-                legend: {
-                    display: true,
-                    title: {
-                        text: 'testtttttttttttttttttttt',
-                    },
                 }
             },
             responsive: true,
+            maintainAspectRatio: true,
             scales: {
                 x: {
                     stacked: true,
